@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+    </head>
+    <body>
+         <div id="main">
+            <% @data.each_with_index do |obj, i| %>
+                <a href="http://<%= obj["display_url"] %>" target="_blank">
+                <img src="<%= obj["url"] %>" width="auto" height="300" class="img-main">
+                </a>
+            <% end %>
+        </div>
+    </body>
+</html>
