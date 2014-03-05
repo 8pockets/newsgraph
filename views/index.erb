@@ -1,18 +1,53 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-        <meta name="keywords" content="">
-        <meta name="description" content="">
-    </head>
-    <body>
-        <div id="main">
-            <% @data.each_with_index do |obj, i| %>
-                <a href="http://<%= obj["display_url"] %>" target="_blank">
-                <img src="<%= obj["url"] %>" width="auto" height="400" class="img-main">
-                </a>
-            <% end %>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.5"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <script>
+        $(function(){
+            var $container = $('#container');
+            $container.imagesLoaded(function(){
+                $container.masonry({
+                itemSelector : '.item'
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="container" class="js-masonry">
+        <% @data.each_with_index do |obj, i| %>
+         <div class="item">
+            <a class="fancybox" href="<%= obj["url"] %>" title="http://<%= obj["display_url"] %>" target="_blank">
+            <img src="<%= obj["url"] %>" class="img-main">
+            </a>
         </div>
-    </body>
+        <% end %>
+    </div>
+<script type="text/javascript"> 
+$(".fancybox").fancybox({
+    padding: 0,
+
+    openEffect : 'elastic',
+    openSpeed  : 150,
+
+    closeEffect : 'elastic',
+    closeSpeed  : 150,
+
+    closeClick : true,
+
+    helpers : {
+    overlay : null
+     }
+});
+</script>
+</body>
 </html>

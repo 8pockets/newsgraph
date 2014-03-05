@@ -17,8 +17,8 @@ end
 #新たなデータの取得
 count = 0
 @db = Mysql2::Client.new(:host => "localhost", :username => "root", :password => "54135413", :database => "twbase")
-client.search("#グラドル自画撮り部", {:result_type => "recent", :include_entities => true}).each do |obj|
-  break if count > 100
+client.search("#グラドル自画撮り部", {:result_type => "recent",:lang => "ja"}).each do |obj|
+  break if count > 200
   if obj.is_a?(Twitter::Tweet)
     #URLデータの取得
     obj.media.each do |o|

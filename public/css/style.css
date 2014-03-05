@@ -1,0 +1,8 @@
+.item{
+  width:250px;
+  margin:0 3px;
+  float:left;
+}
+.item img{
+  max-width:100%;
+}
